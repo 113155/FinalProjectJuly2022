@@ -1,0 +1,88 @@
+###
+
+POST http://localhost:8080/users HTTP/1.1
+content-type: application/json
+
+{
+    "userId": "random1",
+    "firstname": "Trae",
+    "lastname": "Bent",
+    "email": "tra@gmail.com",
+    "password": "pass1",
+    "role": "admin",
+    "payment": null,
+    "picture": "img url"
+}
+
+###
+GET http://localhost:8080/books HTTP/1.1
+
+###
+POST http://localhost:8080/books HTTP/1.1
+content-type: application/json
+
+{
+    "isbn": "1234",
+    "title": "Fighter",
+    "publisher": "CS Lewis",
+    "datePublished": "01/01/1999",
+    "price": 50,
+    "quantity": 1,
+    "isDeleted": 0
+}
+
+
+###
+PUT http://localhost:8080/books/update/1234 HTTP/1.1
+content-type: application/json
+
+{
+    "isbn": "12345",
+    "title": "Fighter 2",
+    "publisher": "CS Lewis",
+    "datePublished": "01/01/2000",
+    "price": 70,
+    "quantity": 1,
+    "isDeleted": 0
+}
+
+###
+PUT http://localhost:8080/books/delete/1234 HTTP/1.1
+content-type: application/json
+
+{
+    "isDeleted": 1,
+    "quantity": 0
+}
+
+###
+
+POST http://localhost:8080/orders HTTP/1.1
+content-type: application/json
+
+{
+    "orderNo": "randomuuid",
+    "userId": "random1",
+    "books": [
+        {
+            "isbn": "1234",
+            "title": "Fighter",
+            "publisher": "CS Lewis",
+            "datePublished": "01/01/1999",
+            "price": 50,
+            "quantity": 1,
+            "isDeleted": 0
+        }
+    ],
+    "payment": {
+        "nameOnCard": "John Bosco",
+        "cardNumber": "123456789012345",
+        "securityCode": "1234",
+        "expirationDate": "05/2028",
+        "zipcode": "64663"
+    },
+    "isDeleted": 0
+}
+
+###
+GET http://localhost:8080/orders HTTP/1.1
